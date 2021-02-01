@@ -5,9 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import {
   ValidationObserver,
-  ValidationProvider,
-  extend,
-  localize
+  ValidationProvider
 } from 'vee-validate'
 
 Vue.component('ValidationObserver', ValidationObserver)
