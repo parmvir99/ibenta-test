@@ -6,14 +6,16 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/app',
+    component: () => import(/* webpackChunkName: 'test' */ '@/views/test'),
     children: [
-      { name: 'test', path: 'test', component: () => import(/* webpackChunkName: 'home' */ '@/views/test') }
+      { name: 'test', path: 'test', component: () => import(/* webpackChunkName: 'test' */ '@/views/test') }
     ]
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })
