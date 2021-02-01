@@ -1,8 +1,9 @@
 <template lang="pug">
   div.p-5
-    b-button.mb-3(variant="primary", size="md", @click.stop="login", v-if="!token")
-      b-spinner(small).button-loader
-      span AUTHENTICATE
+    div(v-if="!token")
+      b-button.mb-3(variant="primary", size="md", @click.stop="login")
+        span AUTHENTICATE
+      p.text-muted.small Please click the button to authenticate yourself.
     div.row.wrap(v-if="token")
       b-col(xl="3", lg="3", cols="6").pr-0.mb-5
         b-card.text-left(:class="{ 'bg-light' : editing }")
@@ -11,7 +12,7 @@
             b-form#createUserForm(data-vv-scope="createUserForm")
               b-form-group.small(label="User Name")
                 ValidationProvider(name="User Name", rules="required", v-slot="{ errors }")
-                  b-form-input(no-resize, placeholder="Enter user name", v-model="form.name")
+                  b-form-input(no-resize, placeholder="Enter user name", v-model="form.name", required)
                   small.error.text-danger {{ errors[0] }}
 
               b-form-group.small(label="Email Address")
